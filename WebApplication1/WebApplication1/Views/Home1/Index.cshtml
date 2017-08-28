@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<script src="~/Scripts/jquery-2.1.0.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+
+<h2>Index</h2>
+<div class="col-md-10">
+    Hello World;
+    @if(!String.IsNullOrEmpty( WebSiteHelper.CurrentUserName)){
+        <div>
+            @WebSiteHelper.CurrentUserName
+                        
+        </div>
+       if (HttpContext.Current.User.IsInRole("admin"))
+        {
+            <div>功能1</div>
+        }
+        else
+        {
+            <div>功能2</div>
+        }
+        
+        <div>
+            @Html.ActionLink("登出","Logout")
+        </div>
+    }
+</div>
+

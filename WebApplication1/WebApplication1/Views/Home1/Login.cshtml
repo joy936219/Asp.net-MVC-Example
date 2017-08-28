@@ -1,0 +1,54 @@
+﻿@model WebApplication1.Models.Account
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+<div class="container-fluid">
+    <div class="col-sm-4 col-md-offset-4">
+        @if (!ViewData.ModelState.IsValid)
+        {
+            <div class="alert alert-danger">
+                <a class="close" data-dismiss="alert" href="#">×</a>
+                @Html.ValidationSummary()
+            </div>
+        }
+    </div>
+
+    <div class="col-md-12 col-md-offset-4">
+       
+     
+      @using(@Html.BeginForm("Login", "Home1", FormMethod.Post, new {@class = "form-horizontal"})){
+          @Html.AntiForgeryToken();
+           <div class="form-group">
+               @Html.LabelFor(model => model.UserId, new { @class = "control-label col-sm-1" })
+               @Html.EditorFor(model => model.UserId, new { @class = "form-control col-sm-11" })
+               <div class="text-danger">@Html.ValidationMessageFor(model => model.UserId)</div>
+           </div>
+            <div class="form-group">
+                 @Html.LabelFor(model => model.Password, new { @class = "control-label col-sm-1" })
+                 @Html.EditorFor(model => model.Password, new { @class = "form-control col-sm-11" })
+                <div class="text-danger">
+                    @Html.ValidationMessageFor(model => model.Password)
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <input class="btn btn-info" type="submit" value="Login" />
+                </div>
+                
+            </div>
+
+
+
+
+      }
+      
+    </div>
+
+    <script src="~/Scripts/jquery-3.1.1.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</div>
+
